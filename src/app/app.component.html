@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<body>
+<div class="main">
+    <div class="view">
+        <ul>
+            <li (click)="grid(false)" *ngIf="gridflag">List View</li>
+            <li (click)="grid(true)" *ngIf="!gridflag">Grid View</li>
+            <li (click)="titlesorting('title')">Sort by title
+            </li>
+            <li (click)="votesorting()">sort by vote</li>
+        </ul>
+    </div>
+    
+    <div class="view_border">
+        <div class="view_wrap list_view" *ngIf="!gridflag">
+            <div class="view_book" *ngFor="let item of data; let i = index">
+                <div class="view_left">
+                    <img src="{{item.image}}" alt="Book1">
+                </div>
+                <div class="view_right" >
+                    <p class="title"> {{item.title}}</p>
+                    <p class="content">{{item.author}}</p>
+                    <p class="content">{{item.category}}</p>
+                    <p class="content">{{item.votes}}</p>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="view_wrap grid_view" *ngIf="gridflag">
+            <div class="view_book" *ngFor="let item of data; let i = index">
+                <div class="view_left">
+                    <img src="{{item.image}}" alt="Book1">
+                </div>
+                <div class="view_right">
+                    <p class="title"> {{item.title}}</p>
+                    <p class="content">{{item.author}}</p>
+                    <p class="content">{{item.category}}</p>
+                    <p class="content">{{item.votes}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+<router-outlet></router-outlet>
